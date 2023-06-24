@@ -62,7 +62,7 @@ export const MASTER_CHEF_ADDRESS = Address.fromString(
   '{{ masterchef_address }}{{^masterchef_address}}0x0000000000000000000000000000000000000000{{/masterchef_address}}'
 )
 
-export const MASTER_CHEF_V2_ADDRESS = Address.fromString('0xef0881ec094552b2e128cf945ef17a6752b4ec5d')
+export const MASTER_CHEF_V2_ADDRESS = Address.fromString('0x2245c5b12B8f31CDDD4FBce9c0C4D63e51716BbB')
 
 export const SUSHI_BAR_ADDRESS = Address.fromString(
   '{{ sushi_bar_address }}{{^sushi_bar_address}}0x0000000000000000000000000000000000000000{{/sushi_bar_address}}'
