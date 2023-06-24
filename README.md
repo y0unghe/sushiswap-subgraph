@@ -1,5 +1,20 @@
 # SushiSwap Subgraph
 
+## Steps to Make It Work
+
+First, change contract address at `config/` folder according to network.
+
+At root folder, run `yarn run prepare:goerli` to generate `index.ts` from path `packages/constants/index.template.ts`
+
+`cd` to `subgraphs/masterChefV2`
+
+```
+yarn run codegen
+yarn run build
+```
+
+##
+
 Aims to deliver analytics & historical data for SushiSwap. Still a work in progress. Feel free to contribute!
 
 The Graph exposes a GraphQL endpoint to query the events and entities within the SushiSwap ecosytem.
