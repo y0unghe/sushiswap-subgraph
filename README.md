@@ -13,6 +13,14 @@ yarn run codegen
 yarn run build
 ```
 
+## 需要部署的subgraphs
+
+分别手动替换subgraphs的subgraph.yaml的合约地址
+
+1. blocks (UniswapV2Factory)
+2. exchange
+3. masterchefV2
+
 ##
 
 Aims to deliver analytics & historical data for SushiSwap. Still a work in progress. Feel free to contribute!
