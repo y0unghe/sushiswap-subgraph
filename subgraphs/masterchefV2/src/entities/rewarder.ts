@@ -11,7 +11,7 @@ import { ComplexRewarder as ComplexRewarderContract } from '../../generated/Mast
 import { ConvexRewarder as ConvexRewarderContract } from '../../generated/MasterChefV2/ConvexRewarder'
 import { CloneRewarderTime as CloneRewarderTimeContract } from '../../generated/templates/CloneRewarderTime/CloneRewarderTime'
 import { CloneRewarderTime as CloneRewarderTimeTemplate } from '../../generated/templates'
-import { StakingRewardsSushi as StakingRewardsContract} from '../../generated/templates/StakingRewardsSushi/StakingRewardsSushi'
+import { StakingRewardsSushi as StakingRewardsContract } from '../../generated/templates/StakingRewardsSushi/StakingRewardsSushi'
 import { StakingRewardsSushi as StakingRewardsTemplate } from '../../generated/templates'
 import { Rewarder } from '../../generated/schema'
 
@@ -64,17 +64,19 @@ export function getRewarder(address: Address, block: ethereum.Block): Rewarder {
 export function updateRewarder(address: Address): void {
   let rewarder = Rewarder.load(address.toHex())
 
-  // rewarders that need to be updated through contract calls
-  if (CONVEX_REWARDERS.includes(address)) {
-    const rewarderContract = ConvexRewarderContract.bind(address)
-    let rewardRate = rewarderContract.rewardRate()
-    rewarder.rewardPerSecond = rewardRate
-  }
-  if (address == ALCX_REWARDER) {
-    const rewarderContract = ComplexRewarderContract.bind(address)
-    let rewardRate = rewarderContract.tokenPerBlock()
-    rewarder.rewardPerSecond = rewardRate
-  }
+  if (rewarder) {
+    // rewarders that need to be updated through contract calls
+    if (CONVEX_REWARDERS.includes(address)) {
+      const rewarderContract = ConvexRewarderContract.bind(address)
+      let rewardRate = rewarderContract.rewardRate()
+      rewarder.rewardPerSecond = rewardRate
+    }
+    if (address == ALCX_REWARDER) {
+      const rewarderContract = ComplexRewarderContract.bind(address)
+      let rewardRate = rewarderContract.tokenPerBlock()
+      rewarder.rewardPerSecond = rewardRate
+    }
 
-  rewarder.save()
+    rewarder.save()
+  }
 }

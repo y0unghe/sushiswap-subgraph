@@ -1,4 +1,4 @@
-specVersion: 0.0.3
+specVersion: 0.0.4
 description: MasterChefV2
 repository: https://github.com/sushiswap/sushiswap-subgraph
 schema:
@@ -13,7 +13,7 @@ dataSources:
       startBlock: {{ startBlock }}
     mapping:
       kind: ethereum/events
-      apiVersion: 0.0.4
+      apiVersion: 0.0.5
       language: wasm/assemblyscript
       file: ./src/mappings/masterchefV2.ts
       entities:
@@ -61,7 +61,7 @@ templates:
       abi: CloneRewarderTime
     mapping:
       kind: ethereum/events
-      apiVersion: 0.0.4
+      apiVersion: 0.0.5
       language: wasm/assemblyscript
       file: ./src/mappings/clone-rewarder.ts
       entities:
@@ -79,7 +79,7 @@ templates:
       abi: StakingRewardsSushi
     mapping:
       kind: ethereum/events
-      apiVersion: 0.0.4
+      apiVersion: 0.0.5
       language: wasm/assemblyscript
       file: ./src/mappings/staking-rewarder.ts
       entities:

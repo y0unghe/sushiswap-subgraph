@@ -65,8 +65,8 @@ export function logSetPool(event: LogSetPool): void {
   const pool = getPool(event.params.pid, event.block)
 
   if (event.params.overwrite == true) {
-     const rewarder = getRewarder(event.params.rewarder, event.block)
-     pool.rewarder = rewarder.id
+    const rewarder = getRewarder(event.params.rewarder, event.block)
+    pool.rewarder = rewarder.id
   }
 
   masterChef.totalAllocPoint = masterChef.totalAllocPoint.plus(event.params.allocPoint.minus(pool.allocPoint))
@@ -86,11 +86,13 @@ export function logUpdatePool(event: LogUpdatePool): void {
 
   const masterChef = getMasterChef(event.block)
   const pool = getPool(event.params.pid, event.block)
-  updateRewarder(Address.fromString(pool.rewarder))
-
   pool.accSushiPerShare = event.params.accSushiPerShare
   pool.lastRewardBlock = event.params.lastRewardBlock
   pool.save()
+
+  if (pool.rewarder === null) return
+
+  updateRewarder(Address.fromString(pool.rewarder!))
 }
 
 export function deposit(event: Deposit): void {
